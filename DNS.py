@@ -1,6 +1,7 @@
 import os
 import sys
 import ctypes
+import subprocess
 import tkinter as tk
 from tkinter import messagebox
 
@@ -20,7 +21,7 @@ def elevate_privileges():
 def get_wifi_interface():
     """Retourne le nom de l'interface Wi-Fi connectée (SSID)"""
     try:
-        output = os.popen("netsh wlan show interfaces").read()
+        output = subprocess.check_output("netsh wlan show interfaces", shell=True, text=True)
         interface_name = None
         ssid = None
 
@@ -45,10 +46,10 @@ def set_dns():
     interface, ssid = get_wifi_interface()
     if interface:
         try:
-            os.system(f'netsh interface ip set dns name="{interface}" static 8.8.8.8')
-            os.system(f'netsh interface ip add dns name="{interface}" addr=8.8.4.4 index=2')
+            subprocess.run(['netsh', 'interface', 'ip', 'set', 'dns', f'name={interface}', 'static', '8.8.8.8'], check=True)
+            subprocess.run(['netsh', 'interface', 'ip', 'add', 'dns', f'name={interface}', 'addr=8.8.4.4', 'index=2'], check=True)
             messagebox.showinfo("Succès", f"DNS configuré sur {interface} (SSID : {ssid}) : 8.8.8.8 et 8.8.4.4.")
-        except Exception as e:
+        except subprocess.CalledProcessError as e:
             messagebox.showerror("Erreur", f"Une erreur s'est produite : {e}")
     else:
         messagebox.showerror("Erreur", "Aucune interface Wi-Fi détectée.")
@@ -58,9 +59,9 @@ def reset_dns():
     interface, ssid = get_wifi_interface()
     if interface:
         try:
-            os.system(f'netsh interface ip set dns name="{interface}" source=dhcp')
+            subprocess.run(['netsh', 'interface', 'ip', 'set', 'dns', f'name={interface}', 'source=dhcp'], check=True)
             messagebox.showinfo("Succès", f"DNS réinitialisé en mode automatique sur {interface} (SSID : {ssid}).")
-        except Exception as e:
+        except subprocess.CalledProcessError as e:
             messagebox.showerror("Erreur", f"Une erreur s'est produite : {e}")
     else:
         messagebox.showerror("Erreur", "Aucune interface Wi-Fi détectée.")
@@ -70,9 +71,9 @@ def verify_dns():
     interface, ssid = get_wifi_interface()
     if interface:
         try:
-            output = os.popen(f'netsh interface ip show dns name="{interface}"').read()
+            output = subprocess.check_output(['netsh', 'interface', 'ip', 'show', 'dns', f'name={interface}'], text=True)
             messagebox.showinfo("Paramètres DNS", f"Interface : {interface}\nSSID : {ssid}\n{output}")
-        except Exception as e:
+        except subprocess.CalledProcessError as e:
             messagebox.showerror("Erreur", f"Erreur lors de la vérification DNS : {e}")
     else:
         messagebox.showerror("Erreur", "Aucune interface Wi-Fi détectée pour vérification.")
