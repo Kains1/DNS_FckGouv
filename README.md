@@ -14,7 +14,7 @@ Ce script Python permet de gérer les paramètres DNS de votre interface Wi-Fi s
 - **Droits administrateur** : Le script nécessite des droits administrateur pour modifier les paramètres DNS.
 
 ## Installation
-1. Téléchargez l'exécutable à partir de ce [lien](https://github.com/Kains1/DNS_FckGouv).
+1. Téléchargez l'archive ZIP contenant l'exécutable à partir de ce [lien](https://github.com/Kains1/DNS_FckGouv) et extrayez-la sur votre ordinateur.
 2. Placez-vous dans le dossier contenant l'exécutable.
 
 ## Utilisation
@@ -43,4 +43,4 @@ Ce script Python permet de gérer les paramètres DNS de votre interface Wi-Fi s
 L'utilisation de ce script modifie les paramètres réseau de votre ordinateur. Assurez-vous de bien comprendre les actions effectuées avant de les exécuter, en particulier si vous êtes sur un réseau d'entreprise ou un réseau restreint.
 
 ## Licence
-Ce projet est sous licence GPL-3.0 licence. Voir le fichier LICENSE pour plus de détails.
+Ce projet est sous licence GPL-3.0. Voir le fichier LICENSE pour plus de détails.
