@@ -42,8 +42,5 @@ Ce script Python permet de gérer les paramètres DNS de votre interface Wi-Fi s
 ## Avertissement
 L'utilisation de ce script modifie les paramètres réseau de votre ordinateur. Assurez-vous de bien comprendre les actions effectuées avant de les exécuter, en particulier si vous êtes sur un réseau d'entreprise ou un réseau restreint.
 
-## Auteur
-Lucas Gontard
-
 ## Licence
-Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
+Ce projet est sous licence GPL-3.0 licence. Voir le fichier LICENSE pour plus de détails.
