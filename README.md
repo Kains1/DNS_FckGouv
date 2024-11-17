@@ -20,7 +20,7 @@ Ce script Python permet de gérer les paramètres DNS de votre interface Wi-Fi s
 ## Utilisation
 1. **Lancer l'exécutable** :
    
-   Double-cliquez sur le fichier `gestionnaire_dns.exe`.
+   Double-cliquez sur le fichier `DNS.exe`.
 
 2. Lors de l'exécution, une fenêtre GUI s'ouvre vous permettant de choisir parmi les différentes actions disponibles.
 
